@@ -1,8 +1,12 @@
+import {BrowserRouter as Router, Route,Routes } from "react-router-dom";
+import Signup from './Components/User/Signup'
 function App() {
   return (
-    <div className="App">
-      <h1>hello guyz</h1>
-    </div>
+    <Router>
+   <div>
+    <Signup/>
+   </div>
+    </Router>
   );
 }
 

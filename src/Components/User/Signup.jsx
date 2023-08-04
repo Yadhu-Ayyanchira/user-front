@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from './Signup.css'
+import './Signup.css'
 import {Link,useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
@@ -32,17 +32,17 @@ const Signup = () =>{
         }
     }
     return (
-      <div className={styles.Signup_container}>
-        <div className={styles.Signup_form_container}>
-          <div className={styles.left}>
+      <div className="signup_container">
+        <div className="signup_form_container">
+          <div className="left">
             <Link to="/login">
-              <button type="button" className={styles.white_btn}>
+              <button type="button" className="white_btn">
                 Sign in
               </button>
             </Link>
           </div>
-          <div className={styles.right}>
-            <form className={styles.form_container} onSubmit={handleSubmit}>
+          <div className="right">
+            <form className="form_container" onSubmit={handleSubmit}>
               <h1>Create Account</h1>
               <input
                 type="text"
@@ -51,7 +51,7 @@ const Signup = () =>{
                 onChange={handleChange}
                 value={data.name}
                 required
-                className={styles.input}
+                className="input"
               />
               <input
                 type="text"
@@ -60,7 +60,7 @@ const Signup = () =>{
                 onChange={handleChange}
                 value={data.mob}
                 required
-                className={styles.input}
+                className="input"
               />
               <input
                 type="text"
@@ -69,7 +69,7 @@ const Signup = () =>{
                 onChange={handleChange}
                 value={data.email}
                 required
-                className={styles.input}
+                className="input"
               />
               <input
                 type="text"
@@ -78,13 +78,17 @@ const Signup = () =>{
                 onChange={handleChange}
                 value={data.password}
                 required
-                className={styles.input}
+                className="input"
               />
-              {error && <div className={styles.error_msg}>{error}</div>}
-              <button type='submit' className={styles.green_btn}>Sign Up</button>
+              {error && <div className='error_msg'>{error}</div>}
+              <button type="submit" className='green_btn'>
+                Sign Up
+              </button>
             </form>
           </div>
         </div>
       </div>
     );
 }
+
+export default Signup;
