@@ -21,9 +21,7 @@ const Signup = () =>{
         e.preventDefault();
         console.log(data);
         try {
-            const url = "http://localhost:8080/api/users";
-            const {data:res} = await axios.post(url,data);
-            navigate("/login")
+          const response = await RegUser(value);
             console.log(res.message);
         } catch (error) {
             if(error.response && error.response.status >= 400 && error.response.status <=500){
@@ -35,6 +33,7 @@ const Signup = () =>{
       <div className="signup_container">
         <div className="signup_form_container">
           <div className="left">
+            <h1>Already have Account?</h1>
             <Link to="/login">
               <button type="button" className="white_btn">
                 Sign in
