@@ -19,3 +19,22 @@ export async function UserReg(credentials){
      console.log(error);
    }
  }
+
+ export async function UpdateImage(id,img){
+  try {
+    const formData = new FormData()
+    formData.append('image',img)
+    formData.append('userId',id)
+    const config = {
+      header: {
+        "content-type": "multipart/form-data",
+        userId: id,
+      },
+      WithCreadentials: true,
+    }
+    const data = await userApi.post("/imgupdate",formData,config)
+    return data
+  } catch (error) {
+    console.log(error);
+  }
+ }

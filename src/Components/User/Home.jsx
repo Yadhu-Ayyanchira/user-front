@@ -2,7 +2,7 @@ import React from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import { LogoutDetails } from "../../Redux/User/UserSlice";
@@ -48,12 +48,12 @@ function Home() {
                   >
                     LOG OUT
                   </Button>
-                  <Button
+                  {/* <Button
                     variant="outline-success rounded-0"
                     onClick={() => navigate("/profile")}
                   >
                     PROFILE
-                  </Button>
+                  </Button> */}
                 </div>
               ) : (
                 <Button
