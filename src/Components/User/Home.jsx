@@ -6,6 +6,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import { LogoutDetails } from "../../Redux/User/UserSlice";
+import UserProfile from "./UserProfile";
 
 function Home() {
   const navigate = useNavigate();
@@ -32,7 +33,6 @@ function Home() {
           <Navbar.Toggle aria-controls="navbarNav" />
           <Navbar.Collapse id="navbarNav">
             <div className="ms-auto">
-              {" "}
               {localStorage.getItem("token") ? (
                 <div>
                   <Navbar.Text>
@@ -67,6 +67,7 @@ function Home() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      { <UserProfile/>}
     </div>
   );
 }
