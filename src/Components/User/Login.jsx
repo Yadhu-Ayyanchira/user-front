@@ -1,32 +1,49 @@
-import React,{useState} from 'react'
-import {Link} from 'react-router-dom'
-import './Login.css'
-import axios from 'axios';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
+import { useDispatch } from "react-redux";
+import { setUserDetails } from "../../Redux/User/UserSlice";
+import { UserLogin } from "../../Api/UserApi";
 
 function Login() {
-    const [data, setData] = useState({ email: "", password: "" });
-	const [error, setError] = useState("");
+  const [data, setData] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-	const handleChange = ({ currentTarget: input }) => {
-		setData({ ...data, [input.name]: input.value });
-	};
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        const url = "http://localhost:4000/api/auth";
-        const { data: res } = await axios.post(url, data);
-        localStorage.setItem("token", res.data);
-        window.location = "/";
-      } catch (error) {
-        if (
-          error.response &&
-          error.response.status >= 400 &&
-          error.response.status <= 500
-        ) {
-          setError(error.response.data.message);
+  const handleChange = ({ currentTarget: input }) => {
+    setData({ ...data, [input.name]: input.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { email, password } = data;
+    try {
+      if (!email) {
+        setError("Enter email")
+      } else if (!password) {
+        setError("Enter password")
+      }else{
+        const response = await UserLogin(data)
+        if (response.data.status===true) {
+          localStorage.setItem("token", response.data.token);
+          dispatch(
+            setUserDetails({
+              id: response.data.user._id,
+              email: response.data.user.email,
+              name: response.data.user.name,
+            })
+          );
+          navigate("/");
+        } else {
+          setError(response.data.alert)
         }
       }
-    };
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   return (
     <div className="login_container">
       <div className="login_form_container">
@@ -39,7 +56,6 @@ function Login() {
               name="email"
               onChange={handleChange}
               value={data.email}
-              required
               className="logininput"
             />
             <input
@@ -48,7 +64,6 @@ function Login() {
               name="password"
               onChange={handleChange}
               value={data.password}
-              required
               className="logininput"
             />
             {error && <div className="loginerror_msg">{error}</div>}
@@ -70,4 +85,4 @@ function Login() {
   );
 }
 
-export default Login
+export default Login;

@@ -49,6 +49,8 @@ const Signup = () =>{
                 })
               );
               navigate('/');
+            }else{
+              setError('User already exists');
             }
           }
         } catch (error) {

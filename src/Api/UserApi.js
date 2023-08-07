@@ -12,6 +12,7 @@ export async function UserReg(credentials){
 
  export async function UserLogin(details) {
    try {
+    console.log('in userlogin'+details);
      const data = await userApi.post("/login", details);
      return data;
    } catch (error) {
