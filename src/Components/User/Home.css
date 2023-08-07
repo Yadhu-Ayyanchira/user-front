@@ -1,0 +1,11 @@
+.home_container{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+.navcontainer {
+  background-color: #3bb19b !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between!important;
+}

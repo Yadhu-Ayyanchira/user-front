@@ -1,25 +1,20 @@
-import axios from "axios";
+import {userApi} from "../Utils/Api"
 
-const userApi = axios.create({
-  baseURL: `http://localhost:8080`,
-});
-
-userApi.interceptors.request.use((req) => {
-  if (localStorage.getItem("token")) {
-    console.log("intersrptor");
-    req.headers.Authorization = "Bearer" + localStorage.getItem("token");
-  }
-  console.log("not the if of interseptor");
-  return req;
-});
-
-export async function RegUser(credentials){
+export async function UserReg(credentials){
     try {
+        console.log('in apisuer/usereg');
        const data = await userApi.post('/signup',credentials)
        return data
     } catch (error) {
-       console.log(error);
+       console.log(error.message);
     }
 }
 
- 
+ export async function UserLogin(details) {
+   try {
+     const data = await userApi.post("/login", details);
+     return data;
+   } catch (error) {
+     console.log(error);
+   }
+ }
