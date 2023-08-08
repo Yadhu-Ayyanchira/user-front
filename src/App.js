@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import UserRoutes from "./Routes/UserRoutes";
+import AdminRoutes from "./Routes/AdminRoutes";
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/*" element={<UserRoutes />} />
+          <Route path="/admin/*" element={<AdminRoutes />} />
         </Routes>
       </Router>
     </div>
