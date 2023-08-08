@@ -22,6 +22,7 @@ export async function UserReg(credentials){
 
  export async function UpdateImage(id,img){
   try {
+    console.log('in up immg fun front');
     const formData = new FormData()
     formData.append('image',img)
     formData.append('userId',id)

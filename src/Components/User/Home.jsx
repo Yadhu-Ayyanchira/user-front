@@ -67,7 +67,7 @@ function Home() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      { <UserProfile/>}
+      { localStorage.getItem("token") ? <UserProfile/> : ""}
     </div>
   );
 }
