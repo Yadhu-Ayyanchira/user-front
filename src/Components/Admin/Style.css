@@ -4,17 +4,23 @@
 .formOuter1{
     padding : 20px!important ;
     margin-top:5%!important;;
-    width:50%;
+    width:40%;
     height:auto!important;
     border-radius:.5rem!important;
     box-shadow: -1px 2px 15px rgba(0,
     0,
-    0,.1)!important;
-    background-color: rgba(41, 237, 214, 0.2)!important;
+    0,.3)!important;
+    background-color: rgba(59, 199, 183, 0.2)!important;
     
 }
 .admincontainer{
     display: flex;
     justify-content: center;
     align-items:center;
+}
+
+.logincontainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }

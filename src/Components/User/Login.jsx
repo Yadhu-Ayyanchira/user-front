@@ -72,7 +72,7 @@ function Login() {
             />
             {error && <div className="loginerror_msg">{error}</div>}
             <button type="submit" className="logingreen_btn">
-              Sing In
+              Sign In
             </button>
           </form>
         </div>
@@ -80,7 +80,7 @@ function Login() {
           <h1>New Here ?</h1>
           <Link to="/signup">
             <button type="button" className="loginwhite_btn">
-              Sing Up
+              Sign Up
             </button>
           </Link>
         </div>
