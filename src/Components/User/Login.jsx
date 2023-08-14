@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -26,20 +25,20 @@ function Login() {
         setError("Enter password");
       } else {
         const response = await UserLogin(data);
-        if (response.data.status === true) {
-          localStorage.setItem("token", response.data.token);
+        if (response.data?.status === true) {
+          localStorage.setItem("token", response.data?.token);
           dispatch(
             setUserDetails({
-              id: response.data.user._id,
-              email: response.data.user.email,
-              mob: response.data.user.mob,
-              name: response.data.user.name,
-              image: response.data.user.image,
+              id: response.data?.user?._id,
+              email: response.data?.user?.email,
+              mob: response.data?.user?.mob,
+              name: response.data?.user?.name,
+              image: response.data?.user?.image,
             })
           );
           navigate("/");
         } else {
-          setError(response.data.alert);
+          setError(response.data?.alert);
         }
       }
     } catch (error) {
@@ -48,7 +47,6 @@ function Login() {
   };
 
   return (
-    // ... Your JSX for the login form ...
     <div className="login_container">
       <div className="login_form_container">
         <div className="loginleft">
